@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../Weather_Station"
+		},
+		{
+			"name": "Weather_Station_Pico",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

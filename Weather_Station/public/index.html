@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Station by Wazed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="logo">🌤️ Weather Station by Wazed</div>
+        <nav class="tabs">
+          <button class="tab-button active" data-tab="local">Local Station</button>
+          <button class="tab-button" data-tab="global">Global Weather</button>
+        </nav>
+      </header>
+
+      <main>
+        <!-- LOCAL STATION TAB -->
+        <section id="tab-local" class="tab active">
+          <div class="card highlight">
+            <h2>Station Overview</h2>
+            <div class="current-row">
+              <div class="current-main">
+                <div class="temp-display">
+                  <span id="current-temp">--</span>
+                  <span class="unit">°C</span>
+                </div>
+                <div id="current-feel">Waiting for data...</div>
+                <div class="small">
+                  Humidity: <span id="current-hum">--</span>%
+                </div>
+                <div class="small">
+                  Noise: <span id="current-noise">--</span> dB · Wind:
+                  <span id="current-wind">--</span> km/h
+                </div>
+              </div>
+
+              <div class="icon-wrapper">
+                <i id="condition-icon" class="fas fa-cloud-sun"></i>
+              </div>
+
+              <div class="date-box">
+                <div class="date-title">Last Update</div>
+                <div id="current-time">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="trend-header">
+            <h2>Trends</h2>
+            <select id="range-filter" class="chart-filter">
+              <option value="1h">Last 1 Hour</option>
+              <option value="6h">Last 6 Hours</option>
+              <option value="12h">Last 12 Hours</option>
+              <option value="24h" selected>Last 24 Hours</option>
+              <option value="7d">Last 7 Days</option>
+            </select>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <h3>Temperature Trend</h3>
+              <canvas id="tempChart"></canvas>
+            </div>
+
+            <div class="card">
+              <h3>Humidity Trend</h3>
+              <canvas id="humChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- GLOBAL WEATHER TAB -->
+        <section id="tab-global" class="tab">
+          <div class="card">
+            <h2>Global Weather Search</h2>
+            <form id="global-form" class="form-row">
+              <input
+                type="text"
+                id="country"
+                placeholder="Country code (e.g. GB, DE, BD)"
+                required
+              />
+              <input
+                type="text"
+                id="city"
+                placeholder="City (e.g. London)"
+                required
+              />
+              <button type="submit">Search</button>
+            </form>
+            <div id="global-status" class="small muted"></div>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <h3>Current Weather</h3>
+              <div id="global-current" class="global-current">
+                <p class="muted">No city selected yet.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Forecast (next days)</h3>
+              <div id="global-forecast" class="forecast-grid"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
