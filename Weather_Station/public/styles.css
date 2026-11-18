@@ -278,3 +278,10 @@ body {
 .tab.active {
   display: block;
 }
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}

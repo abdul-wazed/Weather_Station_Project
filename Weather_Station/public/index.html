@@ -114,8 +114,18 @@
           </div>
         </section>
       </main>
+
+      <footer class="footer">
+        Weather Station by Wazed · <span id="app-version">v…</span> · MIT License
+      </footer>
     </div>
 
     <script src="app.js"></script>
+    <script>
+      fetch("/api/version")
+        .then((r) => r.json())
+        .then((d) => (document.getElementById("app-version").textContent = "v" + d.version))
+        .catch(() => {});
+    </script>
   </body>
 </html>
