@@ -8,6 +8,7 @@ const admin = require("firebase-admin");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const axios = require("axios");
+const { name: APP_NAME, version: APP_VERSION } = require("./package.json");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -251,8 +252,16 @@ app.get("/api/openweather", async (req, res) => {
 
 
 // --------------------------------------------------------
+// API — Version (added in v1.1.0)
+// --------------------------------------------------------
+app.get("/api/version", (req, res) => {
+  res.json({ name: APP_NAME, version: APP_VERSION });
+});
+
+
+// --------------------------------------------------------
 // START SERVER
 // --------------------------------------------------------
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server running: http://localhost:${PORT}`);
+  console.log(`🚀 Server running: http://localhost:${PORT} (v${APP_VERSION})`);
 });
